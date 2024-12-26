@@ -1,6 +1,6 @@
 import Button from "../Components/Button";
 import { MdCloudDownload } from "react-icons/md";
-import "./index.css";
+import "../index.css"
 
 export default function ButtonPage() {
   const handleClick = () => {
