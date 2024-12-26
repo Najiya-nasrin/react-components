@@ -20,7 +20,7 @@ export default function Button({
       "bg-red-500 border-red-700": danger,
       "bg-green-500 border-green-700 ": success,
       "border-gray-900 bg-gray-900": secondary,
-      "text-white": warning || secondary || danger,
+      "text-white": warning || secondary || danger || primary,
       "rounded-full": rounded,
       "bg-white": outline,
       "text-blue-500": outline && primary,

@@ -1,30 +1,46 @@
 import Link from "./Link";
-import Route from "./Route";
-import AccordionPage from '../Pages/AccordionPage'
-import ButtonPage from '../Pages/ButtonPage'
-import DropDown from '../Pages/DropDownPage'
-import DropDownPage from "../Pages/DropDownPage";
 
 export default function SideBar() {
+  const Links = [
+    {
+      label: "Dropdown",
+      path: "/",
+    },
+    {
+      label: "Button",
+      path: "/button",
+    },
+    {
+      label: "Accordion",
+      path: "/accordion",
+    },
+    {
+      label: "Table",
+      path: "/table",
+    },
+    {
+        label: "Modal",
+        path: "/modal",
+      },
+  ];
   return (
     <div>
       <ul>
-        <li>
-          <Link to="/accordion">Accordion</Link>
-        </li>
-        <li>
-          <Link to="/button">Button</Link>
-        </li>
-        <li>
-          <Link to="/dropdown">DropDown</Link>
-        </li>
+        {Links.map((link) => (
+          <li
+            className="sticky top-0 overflow-y-scroll flex flex-col items-start"
+            key={link.label}
+          >
+            <Link
+              to={link.path}
+              className="mb-3"
+              activeClassName="font-bold border-l-4 border-blue-500 pl-2"
+            >
+              {link.label}
+            </Link>
+          </li>
+        ))}
       </ul>
-
-      <div>
-        <Route path="/accordion"><AccordionPage /></Route>
-        <Route path="/button"><ButtonPage /></Route>
-        <Route path="/dropdown"><DropDownPage /></Route>
-      </div>
     </div>
   );
 }
