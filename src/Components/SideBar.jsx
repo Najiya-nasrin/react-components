@@ -22,6 +22,10 @@ export default function SideBar() {
         label: "Modal",
         path: "/modal",
       },
+      {
+        label: "Search",
+        path: "/search",
+      },
   ];
   return (
     <div>
