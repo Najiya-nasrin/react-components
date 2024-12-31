@@ -1,33 +1,74 @@
 import Button from "../Components/Button";
-import { useState } from "react";
+import { useReducer } from "react";
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case ACTION_TYPES.INCREMENT_COUNT:
+      return {
+        ...state,
+        count: state.count + 1,
+      };
+    case ACTION_TYPES.DECREMENT_COUNT:
+      return {
+        ...state,
+        count: state.count - 1,
+      };
+    case ACTION_TYPES.SET_VALUE_TO_ADD:
+      return {
+        ...state,
+        valueToAdd: action.payload,
+      };
+    case ACTION_TYPES.ADD_VALUE:
+      return {
+        ...state,
+        count: state.count + state.valueToAdd,
+        valueToAdd: 0,
+      };
+    default:
+      return { ...state };
+  }
+};
+
+const ACTION_TYPES = {
+  INCREMENT_COUNT: "increment_count",
+  DECREMENT_COUNT: "decrement_count",
+  SET_VALUE_TO_ADD: "set_value_to_add",
+  ADD_VALUE: "add_value",
+};
 
 export default function CounterPage() {
-  const [count, setCount] = useState(10);
-  const [valueToAdd, setvalueToAdd] = useState('');
+  const [state, dispatch] = useReducer(reducer, { count: 10, valueToAdd: 0 });
 
   const incrementCount = () => {
-    setCount(count + 1);
+    dispatch({
+      type: ACTION_TYPES.INCREMENT_COUNT,
+    });
   };
 
   const decrementCount = () => {
-    setCount(count - 1);
+    dispatch({
+      type: ACTION_TYPES.DECREMENT_COUNT,
+    });
   };
 
   const addValue = (event) => {
     event.preventDefault();
-    setCount(count + valueToAdd);
-    setvalueToAdd('');
-  }
+    dispatch({
+      type: ACTION_TYPES.ADD_VALUE,
+    });
+  };
 
   const setNumber = (event) => {
     const { value } = event.target;
-    console.log('value', value);
-    setvalueToAdd(+value);
-  }
+    dispatch({
+      type: ACTION_TYPES.SET_VALUE_TO_ADD,
+      payload: +value,
+    });
+  };
 
   return (
     <div className="border px-3 py-3">
-      <div className="mb-5">The value of count is: {count}</div>
+      <div className="mb-5 text-lg text-emerald-600">The value of count is: {state.count}</div>
       <div className="flex mb-5">
         <Button onClick={incrementCount}> Increment</Button>
         <Button onClick={decrementCount}> Decrement</Button>
@@ -36,7 +77,7 @@ export default function CounterPage() {
         <form onSubmit={addValue}>
           <input
             onChange={setNumber}
-            value={valueToAdd}
+            value={state.valueToAdd || ''}
             className="border px-2 mb-5"
             type="number"
             placeholder="enter a number"
