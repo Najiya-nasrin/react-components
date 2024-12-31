@@ -26,6 +26,10 @@ export default function SideBar() {
         label: "Search",
         path: "/search",
       },
+      {
+        label: "Counter",
+        path: "/counter",
+      },
   ];
   return (
     <div>

@@ -6,6 +6,7 @@ import DropDownPage from "./Pages/DropDownPage";
 import TablePage from "./Pages/TablePage";
 import ModalPage from "./Pages/ModalPage";
 import SearchPage from "./Pages/SearchPage";
+import CounterPage from "./Pages/CounterPage";
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
         </Route>
         <Route path="/search">
           <SearchPage />
+        </Route>
+        <Route path="/counter">
+          <CounterPage />
         </Route>
       </div>
     </div>
