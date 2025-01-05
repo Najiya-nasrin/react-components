@@ -7,6 +7,7 @@ import TablePage from "./Pages/TablePage";
 import ModalPage from "./Pages/ModalPage";
 import SearchPage from "./Pages/SearchPage";
 import CounterPage from "./Pages/CounterPage";
+import PlayListPage from "./Pages/PlayListPage";
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
         </Route>
         <Route path="/counter">
           <CounterPage />
+        </Route>
+        <Route path="/playlist">
+          <PlayListPage />
         </Route>
       </div>
     </div>

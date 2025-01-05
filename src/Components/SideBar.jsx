@@ -30,6 +30,10 @@ export default function SideBar() {
         label: "Counter",
         path: "/counter",
       },
+      {
+        label: "Playlist",
+        path: "/playlist",
+      },
   ];
   return (
     <div>
