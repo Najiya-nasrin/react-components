@@ -1,10 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.jsx";
-import "./index.css";
-import { NavigationProvider } from "./context/NavigationContext.jsx";
+import App from "./src/App.jsx";
+import "./src/index.css";
+import { NavigationProvider } from "./src/context/NavigationContext.jsx";
 import { Provider } from "react-redux";
-import { store } from "./store";
+import { store } from "./src/store";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
